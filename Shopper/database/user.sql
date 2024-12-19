@@ -1,25 +1,21 @@
--- ********************************************************************************
--- This script creates the database users and grants them the necessary permissions
--- ********************************************************************************
-
-CREATE USER final_capstone_owner
-WITH PASSWORD 'finalcapstone';
+CREATE USER shopper_owner
+with PASSWORD 'ownerpassword';
 
 GRANT ALL
 ON ALL TABLES IN SCHEMA public
-TO final_capstone_owner;
+TO shopper_owner;
 
 GRANT ALL
 ON ALL SEQUENCES IN SCHEMA public
-TO final_capstone_owner;
+TO shopper_owner;
 
-CREATE USER final_capstone_appuser
-WITH PASSWORD 'finalcapstone';
+CREATE USER shopper_appuser
+WITH PASSWORD 'userpassword';
 
 GRANT SELECT, INSERT, UPDATE, DELETE
 ON ALL TABLES IN SCHEMA public
-TO final_capstone_appuser;
+TO shopper_appuser;
 
 GRANT USAGE, SELECT
 ON ALL SEQUENCES IN SCHEMA public
-TO final_capstone_appuser;
+TO shopper_appuser;
