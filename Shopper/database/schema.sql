@@ -4,31 +4,28 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS pantry;
 DROP TABLE IF EXISTS item;
 
-CREATE TABLE users(
-    user_id SERIAL,
-    username varchar(50) NOT NULL UNIQUE,
-    password_hash varchar(200) NOT NULL,
-    CONSTRAINT PK_user PRIMARY KEY (user_id)
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY, --forgot to mark as PK for EVERY PK
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password_hash VARCHAR(200) NOT NULL
 );
 
-CREATE TABLE pantry(
-    pantry_id SERIAL,
-    pantry_owner_id int NOT NULL,
-    name NOT NULL,
-    description text NOT NULL,
-    CONSTRAINT PK_pantry PRIMARY KEY (pantry_id)
-    CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users (user_id)
+CREATE TABLE pantry (
+    pantry_id SERIAL PRIMARY KEY,
+    pantry_owner_id INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    FOREIGN KEY (pantry_owner_id) REFERENCES users (user_id)
 );
 
-CREATE TABLE item(
-    item_id SERIAL,
-    pantry_id int NOT NULL,
-    name varchar(50) NOT NULL,
-    status varchar(50) NOT NULL,
-    type varchar(50) NULL,
-    description text NULL,
-    CONSTRAINT PK_item PRIMARY KEY (item_id)
-    CONSTRAINT FK_pantry_id FOREIGN KEY (pantry_id) REFERENCES pantry (pantry_id)
+CREATE TABLE item (
+    item_id SERIAL PRIMARY KEY,
+    pantry_id INT NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    type VARCHAR(50) NULL,
+    description TEXT NULL,
+    FOREIGN KEY (pantry_id) REFERENCES pantry(pantry_id)
 );
 
 COMMIT TRANSACTION;

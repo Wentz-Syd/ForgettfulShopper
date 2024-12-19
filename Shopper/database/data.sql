@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-INSERT INTO users (username,password_hash) VALUES ('Syd', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC');
+INSERT INTO users (username, password_hash) VALUES ('Syd', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC');
 
 INSERT INTO pantry (pantry_owner_id, name, description) VALUES ('1', 'crap I need', 'I know Ill need this later and forget');
 

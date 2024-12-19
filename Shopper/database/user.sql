@@ -1,5 +1,5 @@
 CREATE USER shopper_owner
-with PASSWORD 'ownerpassword';
+WITH PASSWORD 'ownerpassword';
 
 GRANT ALL
 ON ALL TABLES IN SCHEMA public
