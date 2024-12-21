@@ -2,7 +2,6 @@ package org.Server.dao;
 
 import org.Server.model.RegisterUserDto;
 import org.Server.model.User;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 

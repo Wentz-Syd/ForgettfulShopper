@@ -1,7 +1,5 @@
 package org.Server.model;
 
-import java.util.HashSet;
-import java.util.Set;
 
 public class User {
 
@@ -17,7 +15,6 @@ public class User {
         this.id = id;
         this.username = username;
         this.password = password;
-
         this.activated = true;
     }
 
