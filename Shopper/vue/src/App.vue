@@ -3,7 +3,6 @@
       <header class="header">
         <div class="links">
           <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-          <!-- <router-link v-bind:to="{ name: 'listBreweries' }"> Breweries</router-link>&nbsp;|&nbsp; -->
           <router-link v-bind:to="{ name: 'login' }">Login</router-link>&nbsp;|&nbsp;
           <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''"> Logout</router-link>
         </div>
