@@ -14,6 +14,6 @@ public interface PantryDao {
 
     Pantry createPantry(Pantry pantry);
 
-    Pantry updatePantry(int pantryid);
+    Pantry updatePantry(Pantry pantry);
 
 }
