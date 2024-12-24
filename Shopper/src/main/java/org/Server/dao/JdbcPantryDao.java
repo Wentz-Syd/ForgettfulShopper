@@ -20,7 +20,7 @@ public class JdbcPantryDao implements PantryDao{
 
 
     @Override
-    public List<Pantry> getLists(int ownerId) {
+    public List<Pantry> getPantries(int ownerId) {
         List<Pantry> pantries = new ArrayList<>();
         String sql = "SELECT pantry_id, pantry_owner_id, name, desciption FROM pantry WHERE pantry_owner_id = ?;";
         try{

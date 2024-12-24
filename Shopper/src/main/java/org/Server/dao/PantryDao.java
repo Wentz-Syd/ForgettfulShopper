@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PantryDao {
 
-    List<Pantry> getLists(int onwerId);
+    List<Pantry> getPantries(int onwerId);
 
     Pantry getPantryById(int pantryId);
 
