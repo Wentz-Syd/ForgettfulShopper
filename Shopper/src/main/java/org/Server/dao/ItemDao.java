@@ -12,7 +12,7 @@ public interface ItemDao {
 
     Item getItemByName(String itemName);
 
-    Item createItem();
+    Item createItem(Item item);
 
     Item updateItem(int itemId);
 

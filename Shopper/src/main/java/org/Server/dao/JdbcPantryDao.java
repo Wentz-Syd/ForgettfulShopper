@@ -24,7 +24,7 @@ public class JdbcPantryDao implements PantryDao{
         List<Pantry> pantries = new ArrayList<>();
         String sql = "SELECT pantry_id, pantry_owner_id, name, desciption FROM pantry WHERE pantry_owner_id = ?;";
         try{
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, onwerId);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, ownerId);
             while (results.next()){
                 Pantry pantry = mapRowToPantry(results);
                 pantries.add(pantry);
@@ -90,7 +90,7 @@ public class JdbcPantryDao implements PantryDao{
     }
 
     @Override
-    public Pantry updatePantry(Pantry pantry) {
+    public Boolean updatePantry(Pantry pantry) {
         String sql = "UPDATE pantry SET name=?, description=? WHERE pantry_id=?;";
         try{
             int rowsUpdate = jdbcTemplate.update(sql, pantry.getPantryName(), pantry.getDescription(), pantry.getPantryId());
@@ -98,7 +98,6 @@ public class JdbcPantryDao implements PantryDao{
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         }catch (DataIntegrityViolationException e) { throw new DaoException("Data integrity violation", e);}
-        return null;
     }
 
     private Pantry mapRowToPantry(SqlRowSet rs){
