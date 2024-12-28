@@ -17,6 +17,16 @@ public class ItemController {
         this.itemDao = itemDao;
     }
 
+    @RequestMapping(path = "/item/new", method = RequestMethod.POST)
+    public void createItem(@RequestBody Item item){
+        try{
+            itemDao.createItem(item);
+
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Item creation failed.");
+        }
+    }
+
     @RequestMapping(path = "/item/{id}", method = RequestMethod.GET)
     public Item getItem(@PathVariable int id){
         try{
@@ -30,5 +40,7 @@ public class ItemController {
             throw new DaoException("Unable to Retrieve Item", e);
         }
     }
+
+
 
 }

@@ -16,4 +16,6 @@ public interface PantryDao {
 
     Boolean updatePantry(Pantry pantry);
 
+    Boolean checkPantryNameForUser(String pantryName, int userId);
+
 }
