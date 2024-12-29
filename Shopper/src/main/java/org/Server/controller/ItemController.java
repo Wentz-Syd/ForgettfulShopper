@@ -17,7 +17,7 @@ public class ItemController {
         this.itemDao = itemDao;
     }
 
-    @RequestMapping(path = "/item/new", method = RequestMethod.POST)
+    @RequestMapping(path = "/newItem", method = RequestMethod.POST)
     public void createItem(@RequestBody Item item){
         try{
             itemDao.createItem(item);
@@ -27,6 +27,8 @@ public class ItemController {
         }
     }
 
+
+//does this need to be specific to YOUR pantry?
     @RequestMapping(path = "/item/{id}", method = RequestMethod.GET)
     public Item getItem(@PathVariable int id){
         try{

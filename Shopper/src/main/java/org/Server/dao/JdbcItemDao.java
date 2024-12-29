@@ -27,7 +27,7 @@ public class JdbcItemDao implements ItemDao{
     @Override
     public Item getItemById(int itemId) {
         Item item = null;
-        String sql = "STRING item_id, pantry_id, name, status, type, description, FROM item WHERE item_id = ?";
+        String sql = "SELECT item_id, pantry_id, name, status, type, description FROM item WHERE item_id = ?";
 
         try{
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, itemId);
@@ -53,7 +53,7 @@ public class JdbcItemDao implements ItemDao{
         String sql = "INSERT INTO item (pantry_id, name, status, type, description) VALUES (?,?,?,?,?) RETURNING item_id";
 
         try{
-            int newItemId = jdbcTemplate.queryForObject(sql, int.class, item.getItemName(), item.getStatus(), item.getType(), item.getDescription());
+            int newItemId = jdbcTemplate.queryForObject(sql, new Object[]{ item.getPantryId(), item.getItemName(), item.getStatus(), item.getType(), item.getDescription() }, Integer.class);
             newItem = getItemById(newItemId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
